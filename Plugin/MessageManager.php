@@ -7,45 +7,72 @@ declare(strict_types=1);
 
 namespace Ronangr1\FlashMessages\Plugin;
 
-use Flasher\Prime\Factory\FlasherFactory;
+use Magento\Framework\Message\Manager;
 use Ronangr1\FlashMessages\Handler\Message as MessageHandler;
+use Ronangr1\FlashMessages\Model\FlashInterface;
 
 class MessageManager
 {
     public function __construct(
-        private readonly FlasherFactory $flasher,
-        private readonly MessageHandler $message,
+        private readonly MessageHandler $handler,
+        private readonly FlashInterface $flash,
     )
     {
-
     }
 
-    public function aroundAddSuccess(\Magento\Framework\Message\Manager $subject, \Closure $proceed, $message)
+    public function aroundAddSuccess(Manager $subject, \Closure $proceed, $message): void
     {
-        $text = $this->message->getText($message);
-        $this->flasher->addSuccess($text);
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'success']);
         return;
     }
 
-    public function aroundAddSuccessMessage(\Magento\Framework\Message\Manager $subject, \Closure $proceed, $message)
+    public function aroundAddSuccessMessage(Manager $subject, \Closure $proceed, $message): void
     {
-        $flasher = $this->flasher->createNotificationBuilder();
-        $text = $this->message->getText($message);
-        $flasher->addSuccess($text);
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'success']);
         return;
     }
 
-    public function aroundAddError(\Magento\Framework\Message\Manager $subject, \Closure $proceed, $message)
+    public function aroundAddError(Manager $subject, \Closure $proceed, $message): void
     {
-        $text = $this->message->getText($message);
-        $this->flasher->addSuccess($text);
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'error']);
         return;
     }
 
-    public function aroundAddErrorMessage(\Magento\Framework\Message\Manager $subject, \Closure $proceed, $message)
+    public function aroundAddErrorMessage(Manager $subject, \Closure $proceed, $message): void
     {
-        $text = $this->message->getText($message);
-        $this->flasher->addSuccess($text);
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'error']);
+        return;
+    }
+
+    public function aroundAddNotice(Manager $subject, \Closure $proceed, $message): void
+    {
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'info']);
+        return;
+    }
+
+    public function aroundAddNoticeMessage(Manager $subject, \Closure $proceed, $message): void
+    {
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'info']);
+        return;
+    }
+
+    public function aroundAddWarning(Manager $subject, \Closure $proceed, $message): void
+    {
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'warning']);
+        return;
+    }
+
+    public function aroundAddWarningMessage(Manager $subject, \Closure $proceed, $message): void
+    {
+        $text = $this->handler->getText($message);
+        $this->flash->set(['message' => $text, 'type' => 'warning']);
         return;
     }
 }
