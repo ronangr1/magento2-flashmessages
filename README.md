@@ -5,7 +5,7 @@
 [![Packagist](https://img.shields.io/packagist/dt/ronangr1/module-flashmessages.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-flashmessages/stats)
 [![Packagist](https://img.shields.io/packagist/dm/ronangr1/module-flashmessages.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-flashmessages/stats)
 
-This module enables you to import and export your CMS content on Magento 2
+This module allows you to replace Magento 2 default messaging with flash messages.
 
 - [Setup](#setup)
     - [Composer installation](#composer-installation)
