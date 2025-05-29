@@ -108,7 +108,10 @@ class MessageManager
                 break;
             default:
                 $message = $this->handler->getText($message);
-                break;
+        }
+
+        if($message instanceof \Magento\Framework\Phrase) {
+            $message = $this->handler->getText($message);
         }
 
         $message = str_replace('%1', $url, $message);

@@ -24,7 +24,7 @@ class Message
         return $this->getValue($message, 'identifier') ?: '';
     }
 
-    public function getData($object): array
+    public function getData($object): ?array
     {
         return $this->getValue($object, 'data');
     }
