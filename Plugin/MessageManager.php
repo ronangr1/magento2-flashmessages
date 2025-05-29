@@ -110,13 +110,15 @@ class MessageManager
                 $message = $this->handler->getText($message);
         }
 
-        if($message instanceof \Magento\Framework\Phrase) {
+        if ($message instanceof \Magento\Framework\Phrase) {
             $message = $this->handler->getText($message);
         }
 
-        $message = str_replace('%1', $url, $message);
+        if ($message) {
+            $message = str_replace('%1', $url, $message);
 
-        $this->flash->set(['message' => $message, 'type' => $type]);
+            $this->flash->set(['message' => $message, 'type' => $type]);
+        }
 
         return $result;
     }

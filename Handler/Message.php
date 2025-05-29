@@ -16,20 +16,21 @@ class Message
 {
     public function getText(Phrase|Success|Error|Warning $phrase): string|Phrase
     {
-        return $this->getValue($phrase, 'text');
+        return $this->getValue($phrase, 'text') ?? '';
     }
 
     public function getIdentifier($message): string
     {
-        return $this->getValue($message, 'identifier') ?: '';
+        return $this->getValue($message, 'identifier') ?? '';
     }
 
-    public function getData($object): ?array
+    public function getData($object): array
     {
-        return $this->getValue($object, 'data');
+        return $this->getValue($object, 'data') ?? [];
     }
 
-    private function getValue($class, string $property) {
+    private function getValue($class, string $property)
+    {
         $reflection = new \ReflectionClass($class);
         $property = $reflection->getProperty($property);
         return $property->getValue($class);

@@ -7,7 +7,6 @@ declare(strict_types=1);
 
 namespace Ronangr1\FlashMessages\ViewModel;
 
-use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Ronangr1\FlashMessages\Model\FlashInterface;
 
