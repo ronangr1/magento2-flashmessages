@@ -9,24 +9,20 @@ namespace Ronangr1\FlashMessages\ViewModel;
 
 use Magento\Framework\Session\SessionManagerInterface;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
+use Ronangr1\FlashMessages\Model\FlashInterface;
 
 class Flash implements ArgumentInterface
 {
 
     public function __construct(
-        private readonly SessionManagerInterface $session,
+        private readonly FlashInterface $flash,
     )
     {
     }
 
     public function getFlash(): ?array
     {
-        $message = $this->session->getData('flash_message');
+        $message = $this->flash->get();
         return $message ?? null;
-    }
-
-    public function clearFlash(): void
-    {
-        $this->session->setData('flash_message', null);
     }
 }

@@ -24,11 +24,6 @@ class Flash implements FlashInterface
 
     public function get(): ?array
     {
-        return $this->session->getData('flash_message');
-    }
-
-    public function clear(): void
-    {
-        $this->session->setData('flash_message', null);
+        return $this->session->getData('flash_message', true) ?: null;
     }
 }

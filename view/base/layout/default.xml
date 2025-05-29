@@ -5,9 +5,11 @@
  * See LICENSE bundled with this library for license details.
  */
 -->
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+        <!-- Remove default messaging system -->
+        <referenceContainer name="page.messages" remove="true"/>
+        <!-- Add a flash messages system -->
         <referenceContainer name="content">
             <block name="ronangr1.flash" template="Ronangr1_FlashMessages::flash.phtml">
                 <arguments>

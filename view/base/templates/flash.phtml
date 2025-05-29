@@ -18,7 +18,7 @@ $flash = $viewModel->getFlash();
 <?php if ($flash): ?>
     <script>
         require(['flasher'], function (flasher) {
-            const message = <?= json_encode($escaper->escapeHtml($flash['message'])) ?>;
+            const message = <?= json_encode($escaper->escapeHtml($flash['message'], ['a'])) ?>;
             const methods = {
                 success: 'success',
                 error: 'error',
@@ -29,5 +29,4 @@ $flash = $viewModel->getFlash();
             flasher[methods[method]](message);
         })
     </script>
-    <?php $viewModel->clearFlash(); ?>
-<?php endif; ?>
+    <?php endif; ?>

@@ -7,14 +7,31 @@ declare(strict_types=1);
 
 namespace Ronangr1\FlashMessages\Handler;
 
+use Magento\Framework\Message\Error;
+use Magento\Framework\Message\Success;
+use Magento\Framework\Message\Warning;
 use Magento\Framework\Phrase;
 
 class Message
 {
-    public function getText(Phrase $phrase): string
+    public function getText(Phrase|Success|Error|Warning $phrase): string|Phrase
     {
-        $reflection = new \ReflectionClass($phrase);
-        $property = $reflection->getProperty('text');
-        return $property->getValue($phrase);
+        return $this->getValue($phrase, 'text');
+    }
+
+    public function getIdentifier($message): string
+    {
+        return $this->getValue($message, 'identifier') ?: '';
+    }
+
+    public function getData($object): array
+    {
+        return $this->getValue($object, 'data');
+    }
+
+    private function getValue($class, string $property) {
+        $reflection = new \ReflectionClass($class);
+        $property = $reflection->getProperty($property);
+        return $property->getValue($class);
     }
 }
