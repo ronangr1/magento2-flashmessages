@@ -16,17 +16,24 @@ $flash = $viewModel->getFlash();
 ?>
 
 <?php if ($flash): ?>
-    <script>
-        require(['flasher'], function (flasher) {
-            const message = <?= json_encode($escaper->escapeHtml($flash['message'], ['a'])) ?>;
-            const methods = {
-                success: 'success',
-                error: 'error',
-                warning: 'warning',
-                info: 'info'
-            };
-            const method = <?= json_encode($flash['type']) ?>;
-            flasher[methods[method]](message);
-        })
-    </script>
+    <?php
+    $message = json_encode($flash['message']);
+    $type = json_encode($flash['type']);
+    $scriptString = <<<script
+    require(['flasher'], function (flasher) {
+        const message = JSON.parse('{$message}');
+        const type = JSON.parse('{$type}');
+        const methods = {
+            'success': 'success',
+            'error': 'error',
+            'warning': 'warning',
+            'info': 'info'
+        };
+        flasher[methods[type]](message);
+    })
+script;
+    ?>
+    <?=
+    /* @noEscape */
+    $secureRenderer->renderTag('script', [], $scriptString, false) ?>
 <?php endif; ?>
