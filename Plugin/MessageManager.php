@@ -88,25 +88,32 @@ class MessageManager
     {
 
         $identifier = $this->handler->getIdentifier($message);
-        $type = 'success';
+        $data = $this->handler->getData($message);
+        $url = $data['url'] ?? '#';
+        $type = FlashInterface::TYPE_SUCCESS;
 
-        if($identifier === 'confirmAccountSuccessMessage') {
-            $message = __(
-                'You must confirm your account. Please check your email for the confirmation link or <a href="%1">click here</a> for a new link.',
-                $this->handler->getData($message)['url']
-            );
+        switch ($identifier) {
+            case 'confirmAccountSuccessMessage':
+                $message = __(
+                    'You must confirm your account. Please check your email for the confirmation link or <a href="%1">click here</a> for a new link.',
+                    $url
+                );
+                break;
+            case 'customerAlreadyExistsErrorMessage':
+                $message = __(
+                    'There is already an account with this email address. If you are sure that it is your email address, <a href="%1">click here</a> to get your password and access your account.',
+                    $url
+                );
+                $type = FlashInterface::TYPE_ERROR;
+                break;
+            default:
+                $message = $this->handler->getText($message);
+                break;
         }
 
-        if($identifier === 'customerAlreadyExistsErrorMessage') {
-            $message = __(
-                'There is already an account with this email address. If you are sure that it is your email address, <a href="%1">click here</a> to get your password and access your account.',
-                $this->handler->getData($message)['url']
-            );
-            $type = 'error';
-        }
+        $message = str_replace('%1', $url, $message);
 
-        $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => $type]);
+        $this->flash->set(['message' => $message, 'type' => $type]);
 
         return $result;
     }
