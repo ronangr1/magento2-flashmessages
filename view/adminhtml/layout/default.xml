@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+    <referenceContainer name="content">
+        <block class="Magento\Framework\View\Element\Template" name="ronangr1.flashmessage" template="Ronangr1_FlashMessage::flashmessage.phtml">
+            <arguments>
+                <argument name="view_model" xsi:type="object">Ronangr1\FlashMessages\ViewModel\FlashMessage</argument>
+            </arguments>
+        </block>
+    </referenceContainer>
+</body>
+</page>

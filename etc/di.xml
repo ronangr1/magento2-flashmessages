@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\Message\ManagerInterface">
+        <plugin name="ronangr1_message_manager_plugin" type="Ronangr1\FlashMessages\Plugin\MessageManager" />
+    </type>
+    <preference for="Flasher\Prime\FlasherInterface" type="Flasher\Prime\Flasher" />
+    <preference for="Flasher\Prime\Storage\StorageManagerInterface" type="Flasher\Prime\Storage\StorageManager" />
+    <preference for="Flasher\Prime\Storage\StorageInterface" type="Flasher\Prime\Storage\Storage" />
+    <preference for="Flasher\Prime\Storage\Bag\BagInterface" type="Flasher\Prime\Storage\Bag\ArrayBag" />
+    <preference for="Flasher\Prime\EventDispatcher\EventDispatcherInterface" type="Flasher\Prime\EventDispatcher\EventDispatcher" />
+    <preference for="Flasher\Prime\Storage\Filter\FilterFactoryInterface" type="Flasher\Prime\Storage\Filter\FilterFactory" />
+</config>
