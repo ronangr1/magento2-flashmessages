@@ -22,14 +22,17 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <config_path>flash_messages/general/is_active</config_path>
                 </field>
+            </group>
+            <group id="settings" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Settings</label>
                 <field id="auto_hide" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Auto Hide</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <config_path>flash_messages/general/auto_hide</config_path>
+                    <config_path>flash_messages/settings/auto_hide</config_path>
                 </field>
                 <field id="delay" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Delay</label>
-                    <config_path>flash_messages/general/delay</config_path>
+                    <config_path>flash_messages/settings/delay</config_path>
                 </field>
             </group>
         </section>

@@ -1,3 +1,10 @@
+<!--
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+-->
+
 <!-- ko foreach: getMessages() -->
     <div data-bind="attr: {class: 'message message-' + $data.type + ($data.visible() ? ' show' : ' hide')}">
         <span data-bind="text: $data.message"></span>

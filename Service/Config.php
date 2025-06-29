@@ -21,8 +21,8 @@ class Config
     {
         return [
             'is_active' => $this->scopeConfig->isSetFlag('flash_messages/general/is_active'),
-            'autoHide' => $this->scopeConfig->isSetFlag('flash_messages/general/auto_hide'),
-            'delay' => $this->scopeConfig->getValue('flash_messages/general/delay') ?: 5000,
+            'autoHide' => $this->scopeConfig->isSetFlag('flash_messages/settings/auto_hide'),
+            'delay' => $this->scopeConfig->getValue('flash_messages/settings/delay') ?: 5000,
         ];
     }
 }
