@@ -8,9 +8,9 @@ declare(strict_types=1);
 namespace Ronangr1\FlashMessages\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Ronangr1\FlashMessages\Model\FlashInterface;
+use Ronangr1\FlashMessages\Api\FlashInterface;
 
-class Flash implements ArgumentInterface
+class Messages implements ArgumentInterface
 {
 
     public function __construct(
@@ -22,6 +22,14 @@ class Flash implements ArgumentInterface
     public function getFlash(): ?array
     {
         $message = $this->flash->get();
-        return $message ?? null;
+        return $message ?? [];
+    }
+
+    public function getConfigData(): array
+    {
+        return [
+            'autoHide' => true,
+            'delay' => 2500,
+        ];
     }
 }

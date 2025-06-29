@@ -8,13 +8,14 @@ declare(strict_types=1);
 namespace Ronangr1\FlashMessages\Handler;
 
 use Magento\Framework\Message\Error;
+use Magento\Framework\Message\Notice;
 use Magento\Framework\Message\Success;
 use Magento\Framework\Message\Warning;
 use Magento\Framework\Phrase;
 
 class Message
 {
-    public function getText(Phrase|Success|Error|Warning $phrase): string|Phrase
+    public function getText(Phrase|Success|Error|Warning|Notice $phrase): string|Phrase
     {
         return $this->getValue($phrase, 'text') ?? '';
     }

@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
+
+/**
+ * @var \Magento\Backend\Block\Template $block
+ * @var \Ronangr1\FlashMessages\ViewModel\Messages $viewModel
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+
+$viewModel = $block->getData('view_model');
+$flash = $viewModel->getFlash() ?? [];
+$configData = $viewModel->getConfigData() ?? [];
+?>
+
+<div class="message-container" data-bind="scope: 'flash-messages'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "flash-messages": {
+                        "component": "Ronangr1_FlashMessages/js/view/flash-messages",
+                        "flash": <?= json_encode($flash) ?>,
+                        "configData": <?= json_encode($configData) ?>
+                    }
+                }
+            }
+        }
+    }
+</script>

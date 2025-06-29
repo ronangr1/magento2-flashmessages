@@ -12,9 +12,9 @@
         <referenceContainer name="page.messages" remove="true"/>
         <!-- Add a flash messages system -->
         <referenceContainer name="after.body.start">
-            <block name="ronangr1.flash" template="Ronangr1_FlashMessages::flash.phtml">
+            <block name="ronangr1.flash.messages" template="Ronangr1_FlashMessages::messages.phtml">
                 <arguments>
-                    <argument name="view_model" xsi:type="object">Ronangr1\FlashMessages\ViewModel\Flash</argument>
+                    <argument name="view_model" xsi:type="object">Ronangr1\FlashMessages\ViewModel\Messages</argument>
                 </arguments>
             </block>
         </referenceContainer>

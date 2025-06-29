@@ -8,8 +8,8 @@ declare(strict_types=1);
 namespace Ronangr1\FlashMessages\Plugin;
 
 use Magento\Framework\Message\Manager as CoreMessageManager;
+use Ronangr1\FlashMessages\Api\FlashInterface;
 use Ronangr1\FlashMessages\Handler\Message as MessageHandler;
-use Ronangr1\FlashMessages\Model\FlashInterface;
 
 class MessageManager
 {
@@ -86,7 +86,6 @@ class MessageManager
 
     public function afterAddMessage(CoreMessageManager $subject, $result, $message, $group = null)
     {
-
         $identifier = $this->handler->getIdentifier($message);
         $data = $this->handler->getData($message);
         $url = $data['url'] ?? '#';
@@ -118,6 +117,16 @@ class MessageManager
             $this->flash->set(['message' => $message, 'type' => $type]);
         }
 
+        return $result;
+    }
+
+    public function afterAddComplexSuccessMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
+    {
+        return $result;
+    }
+
+    public function afterAddComplexErrorMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
+    {
         return $result;
     }
 }

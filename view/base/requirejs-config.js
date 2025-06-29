@@ -1,12 +1,11 @@
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 var config = {
     map: {
         '*': {
-            'flasher': 'Ronangr1_FlashMessages/js/flasher.min',
+            'flashMessages': 'Ronangr1_FlashMessages/js/view/flash-messages'
         },
-        shim: {
-            'flasher': {
-                exports: 'flasher'
-            }
-        }
     }
 };

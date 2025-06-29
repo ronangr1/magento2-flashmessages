@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Ronangr1\FlashMessages\Model;
+namespace Ronangr1\FlashMessages\Api;
 
 interface FlashInterface
 {

@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace Ronangr1\FlashMessages\Model;
 
 use Magento\Framework\Session\SessionManagerInterface;
+use Ronangr1\FlashMessages\Api\FlashInterface;
 
 class Flash implements FlashInterface
 {

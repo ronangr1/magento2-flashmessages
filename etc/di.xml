@@ -7,8 +7,8 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Ronangr1\FlashMessages\Api\FlashInterface" type="Ronangr1\FlashMessages\Model\Flash"/>
     <type name="Magento\Framework\Message\ManagerInterface">
         <plugin name="ronangr1_message_manager_plugin" type="Ronangr1\FlashMessages\Plugin\MessageManager"/>
     </type>
-    <preference for="Ronangr1\FlashMessages\Model\FlashInterface" type="Ronangr1\FlashMessages\Model\Flash"/>
 </config>
