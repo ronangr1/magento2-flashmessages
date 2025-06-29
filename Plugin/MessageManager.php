@@ -122,11 +122,33 @@ class MessageManager
 
     public function afterAddComplexSuccessMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
     {
+        $text = $data['html'];
+        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_SUCCESS]);
+
         return $result;
     }
 
     public function afterAddComplexErrorMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
     {
+        $text = $data['html'];
+        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_ERROR]);
+
+        return $result;
+    }
+
+    public function afterAddComplexWarningMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
+    {
+        $text = $data['html'];
+        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_WARNING]);
+
+        return $result;
+    }
+
+    public function afterAddComplexNoticeMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
+    {
+        $text = $data['html'];
+        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_NOTICE]);
+
         return $result;
     }
 }

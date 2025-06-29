@@ -7,7 +7,7 @@
 
 <!-- ko foreach: getMessages() -->
     <div data-bind="attr: {class: 'message message-' + $data.type + ($data.visible() ? ' show' : ' hide')}">
-        <span data-bind="text: $data.message"></span>
+        <span data-bind="html: $data.message"></span>
         <!-- ko if: $parent.settings.delay -->
         <div class="message-progress-container">
             <div class="message-progress" data-bind="style: { 'animation-duration':  $parent.settings.delay + 'ms' }"></div>
