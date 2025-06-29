@@ -10,6 +10,7 @@ This module allows you to replace Magento 2 default messaging with flash message
 - [Setup](#setup)
     - [Composer installation](#composer-installation)
     - [Setup the module](#setup-the-module)
+- [Documentation](#documentation)
 - [Support](#support)
 - [Authors](#authors)
 - [License](#license)
@@ -20,16 +21,49 @@ Magento 2 Open Source or Commerce edition is required.
 
 This module is compatible with the latest Magento version (2.4.8).
 
-### Install the module package with Composer
+### Installation
 
-`composer require ronangr1/module-flashmessages`
-
-### Launch standard Magento commands
-
+```bash
+composer require ronangr1/module-flashmessages
 ```
+
+Then
+
+```bash
 bin/magento setup:upgrade
 bin/magento setup:di:compile
 ```
+
+## Documentation
+
+If enabled, the default messaging is completely removed and replaced by the flash message system.
+
+### How to display a flash message
+
+```javascript
+require(['flashManager'], function (flashManager) {
+    // You can use the addMessage() function
+    flashManager.addMessage([
+        {
+            type: 'error',
+            message: 'Something went wrong while processing.',
+        }
+    ]);
+    
+    // Or the enqueueMessage() function
+    flashManager.enqueueMessage([
+        {
+            type: 'warning',
+            message: 'Entity saved but something went wrong while processing.',
+        }
+    ]);
+});
+```
+It already works with ajax call.
+
+### How to change the position of the flash message?
+
+Go to `Store > Configuration > Ronangr1 > Flash Messages > Settings > Position`.
 
 ## Support
 
