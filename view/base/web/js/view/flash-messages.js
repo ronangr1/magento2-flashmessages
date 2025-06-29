@@ -4,23 +4,29 @@
  */
 define([
     'uiComponent',
+    'ko',
     'underscore',
-    'Ronangr1_FlashMessages/js/model/flash'
-], function (Component, _, flash) {
+    'Ronangr1_FlashMessages/js/model/flash',
+    'Ronangr1_FlashMessages/js/flash-manager'
+], function (Component, ko, _, flash, flashMessage) {
     'use strict'
 
     return Component.extend({
         defaults: {
             template: 'Ronangr1_FlashMessages/flash-messages',
             settings: {},
+            messageQueue: ko.observableArray([])
         },
 
         initialize: function () {
             this._super()
-
-            if (typeof this.messagesData !== 'undefined' && this.messagesData) {
-                this._setSettings(this.configData)
-                flash.set(this.messagesData)
+            let messageData = this.messagesData
+            messageData = messageData.filter(function (el) {
+                return el != null;
+            });
+            if (messageData && messageData) {
+                this._setSettings(this.configData);
+                flashMessage.initialize(messageData);
             }
 
             return this
@@ -46,7 +52,7 @@ define([
         },
 
         _setSettings: function (settings) {
-            this.settings = settings
+            this.settings = _.extend(this.settings, settings)
 
             return this
         },

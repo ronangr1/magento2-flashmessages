@@ -5,7 +5,8 @@
 const config = {
     map: {
         '*': {
-            'flashMessages': 'Ronangr1_FlashMessages/js/view/flash-messages'
+            'flashMessages': 'Ronangr1_FlashMessages/js/view/flash-messages',
+            'flashManager': 'Ronangr1_FlashMessages/js/flash-manager',
         },
     }
 };
