@@ -4,10 +4,9 @@
  */
 define([
     'uiComponent',
-    'ko',
     'underscore',
     'Ronangr1_FlashMessages/js/model/flash'
-], function (Component, ko, _, flash) {
+], function (Component, _, flash) {
     'use strict'
 
     return Component.extend({
