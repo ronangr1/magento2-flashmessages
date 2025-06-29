@@ -36,7 +36,7 @@ bin/magento setup:di:compile
 
 ## Documentation
 
-If enabled, the default messaging is completely removed and replaced by the flash message system.
+If enabled, the default messaging system is completely removed and replaced by the flash message system.
 
 ### How to display a flash message
 
