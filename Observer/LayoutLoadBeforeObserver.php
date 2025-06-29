@@ -9,12 +9,14 @@ namespace Ronangr1\FlashMessages\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Framework\View\LayoutInterface;
 use Ronangr1\FlashMessages\Service\Config;
 
 class LayoutLoadBeforeObserver implements ObserverInterface
 {
     public function __construct(
-        private readonly Config $config
+        private readonly Config $config,
+        private readonly LayoutInterface $layout
     )
     {
     }
@@ -24,8 +26,10 @@ class LayoutLoadBeforeObserver implements ObserverInterface
         $config = $this->config->getConfig();
 
         if ($config['is_active']) {
-            $layout = $observer->getEvent()->getLayout();
-            $layout->unsetElement('page.messages');
+            $this->layout
+                ->getUpdate()
+                ->addUpdate('<referenceContainer name="page.messages" remove="true"/>'
+            );
         }
 
         return $observer;
