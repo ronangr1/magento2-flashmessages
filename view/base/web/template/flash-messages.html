@@ -1,4 +1,4 @@
-<!-- ko foreach: messages -->
+<!-- ko foreach: getMessages() -->
     <div data-bind="attr: {class: 'message message-' + $data.type + ($data.visible() ? ' show' : ' hide')}">
         <span data-bind="text: $data.message"></span>
         <!-- ko if: $parent.settings.delay -->
@@ -6,6 +6,6 @@
             <div class="message-progress" data-bind="style: { 'animation-duration':  $parent.settings.delay + 'ms' }"></div>
         </div>
         <!-- /ko -->
-        <span class="message-close" data-bind="click: $parent.removeMessage.bind($parent, $data)"></span>
+        <span class="message-close" data-bind="click: $parent.hideAndDelete.bind($parent, $data)"></span>
     </div>
 <!-- /ko -->

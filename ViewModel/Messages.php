@@ -12,6 +12,7 @@ use Ronangr1\FlashMessages\Api\FlashInterface;
 
 class Messages implements ArgumentInterface
 {
+    private array $messages = [];
 
     public function __construct(
         private readonly FlashInterface $flash,
@@ -19,10 +20,13 @@ class Messages implements ArgumentInterface
     {
     }
 
-    public function getFlash(): ?array
+    public function getMessagesData(): ?array
     {
-        $message = $this->flash->get();
-        return $message ?? [];
+        if(!$this->messages) {
+            $this->messages[] = $this->flash->get();
+        }
+
+        return $this->messages;
     }
 
     public function getConfigData(): array

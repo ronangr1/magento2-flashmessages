@@ -12,13 +12,14 @@
  */
 
 $viewModel = $block->getData('view_model');
-$flash = $viewModel->getFlash() ?? [];
+$messageData = $viewModel->getMessagesData() ?? [];
 $configData = $viewModel->getConfigData() ?? [];
 ?>
 
 <div class="message-container" data-bind="scope: 'flash-messages'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
+
 <script type="text/x-magento-init">
     {
         "*": {
@@ -26,7 +27,7 @@ $configData = $viewModel->getConfigData() ?? [];
                 "components": {
                     "flash-messages": {
                         "component": "Ronangr1_FlashMessages/js/view/flash-messages",
-                        "flash": <?= json_encode($flash) ?>,
+                        "messagesData": <?= json_encode($messageData) ?>,
                         "configData": <?= json_encode($configData) ?>
                     }
                 }
