@@ -34,6 +34,11 @@
                     <label>Delay</label>
                     <config_path>flash_messages/settings/delay</config_path>
                 </field>
+                <field id="position" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Position</label>
+                    <source_model>Ronangr1\FlashMessages\Model\Config\Source\Position</source_model>
+                    <config_path>flash_messages/settings/position</config_path>
+                </field>
             </group>
         </section>
     </system>

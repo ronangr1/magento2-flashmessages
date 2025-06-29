@@ -18,6 +18,7 @@ define(['ko', 'underscore'], function (ko, _) {
                 message.visible = ko.observable(true);
                 self.flash.push(message)
             })
+
             return this
         },
 

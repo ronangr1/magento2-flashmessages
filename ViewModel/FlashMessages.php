@@ -38,6 +38,7 @@ class FlashMessages implements ArgumentInterface
         return [
             'autoHide' => $config['autoHide'],
             'delay' => $config['delay'],
+            'position' => $config['position'],
         ];
     }
 }

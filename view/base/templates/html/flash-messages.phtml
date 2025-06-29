@@ -16,7 +16,7 @@ $messageData = $viewModel->getMessagesData() ?? [];
 $configData = $viewModel->getConfigData() ?? [];
 ?>
 
-<div class="message-container" data-bind="scope: 'flash-messages'">
+<div class="flash-messages-container message-position-<?= $configData['position'] ?>" data-bind="scope: 'flash-messages'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
 

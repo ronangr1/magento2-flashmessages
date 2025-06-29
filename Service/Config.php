@@ -23,6 +23,7 @@ class Config
             'is_active' => $this->scopeConfig->isSetFlag('flash_messages/general/is_active'),
             'autoHide' => $this->scopeConfig->isSetFlag('flash_messages/settings/auto_hide'),
             'delay' => $this->scopeConfig->getValue('flash_messages/settings/delay') ?: 5000,
+            'position' => $this->scopeConfig->getValue('flash_messages/settings/position') ?: 'top-right',
         ];
     }
 }
