@@ -19,12 +19,9 @@ define([
         initialize: function () {
             this._super()
 
-            const messages = this.messagesData,
-                configData = this.configData
-
-            if (typeof messages !== 'undefined' && messages) {
-                this._setSettings(configData)
-                flash.set(messages)
+            if (typeof this.messagesData !== 'undefined' && this.messagesData) {
+                this._setSettings(this.configData)
+                flash.set(this.messagesData)
             }
 
             return this
