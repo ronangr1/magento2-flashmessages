@@ -1,3 +1,7 @@
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 define([
     'uiComponent',
     'ko',

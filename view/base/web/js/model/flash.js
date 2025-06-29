@@ -1,14 +1,18 @@
+/**
+ * Copyright © Ronangr1, All rights reserved.
+ * See LICENSE bundled with this library for license details.
+ */
 define(['ko', 'underscore'], function (ko, _) {
     'use strict';
 
     return {
         messages: ko.observableArray([]),
 
-        get: function() {
+        get: function () {
             return this.messages()
         },
 
-        set: function(messages) {
+        set: function (messages) {
             const self = this
             _.each(messages, function (message) {
                 message.visible = ko.observable(true);
