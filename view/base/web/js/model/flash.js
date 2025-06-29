@@ -6,17 +6,17 @@ define(['ko', 'underscore'], function (ko, _) {
     'use strict';
 
     return {
-        messages: ko.observableArray([]),
+        flash: ko.observableArray([]),
 
         get: function () {
-            return this.messages()
+            return this.flash()
         },
 
         set: function (messages) {
             const self = this
             _.each(messages, function (message) {
                 message.visible = ko.observable(true);
-                self.messages.push(message)
+                self.flash.push(message)
             })
             return this
         },
@@ -24,7 +24,7 @@ define(['ko', 'underscore'], function (ko, _) {
         delete: function (message) {
             message.visible(false);
             setTimeout(function () {
-                this.messages.remove(message);
+                this.flash.remove(message);
             }.bind(this), 500)
 
             return this

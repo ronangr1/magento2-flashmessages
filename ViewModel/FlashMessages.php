@@ -9,13 +9,15 @@ namespace Ronangr1\FlashMessages\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Ronangr1\FlashMessages\Api\FlashInterface;
+use Ronangr1\FlashMessages\Service\Config;
 
-class Messages implements ArgumentInterface
+class FlashMessages implements ArgumentInterface
 {
     private array $messages = [];
 
     public function __construct(
         private readonly FlashInterface $flash,
+        private readonly Config $config
     )
     {
     }
@@ -31,9 +33,11 @@ class Messages implements ArgumentInterface
 
     public function getConfigData(): array
     {
+        $config = $this->config->getConfig();
+
         return [
-            'autoHide' => true,
-            'delay' => 2500,
+            'autoHide' => $config['autoHide'],
+            'delay' => $config['delay'],
         ];
     }
 }
