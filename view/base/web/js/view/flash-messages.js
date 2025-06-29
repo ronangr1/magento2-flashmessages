@@ -24,7 +24,7 @@ define([
             messageData = messageData.filter(function (el) {
                 return el != null;
             });
-            if (messageData && messageData) {
+            if (typeof messageData !== "undefined" && messageData.length) {
                 this._setSettings(this.configData);
                 flashMessage.initialize(messageData);
             }
