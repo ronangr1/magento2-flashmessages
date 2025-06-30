@@ -15,7 +15,7 @@ use Magento\Framework\Phrase;
 
 class Message
 {
-    public function getText(Phrase|Success|Error|Warning|Notice $phrase): string|Phrase
+    public function getText(Phrase|Success|Error|Warning|Notice|string $phrase): string|Phrase
     {
         return $this->getValue($phrase, 'text') ?? '';
     }
@@ -32,6 +32,10 @@ class Message
 
     private function getValue($class, string $property)
     {
+        if(is_string($class) && !method_exists($class, $property)) {
+            return null;
+        }
+
         $reflection = new \ReflectionClass($class);
         $property = $reflection->getProperty($property);
         return $property->getValue($class);
