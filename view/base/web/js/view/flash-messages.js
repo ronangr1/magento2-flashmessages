@@ -15,17 +15,19 @@ define([
         defaults: {
             template: 'Ronangr1_FlashMessages/flash-messages',
             settings: {},
-            messageQueue: ko.observableArray([])
         },
 
         initialize: function () {
             this._super()
+
+            this._setSettings(this.configData);
+
             let messageData = this.messagesData
             messageData = messageData.filter(function (el) {
                 return el != null;
             });
+
             if (typeof messageData !== "undefined" && messageData.length) {
-                this._setSettings(this.configData);
                 flashMessage.initialize(messageData);
             }
 
@@ -33,8 +35,7 @@ define([
         },
 
         getMessages: function () {
-            const messages = flash.get(),
-                self = this
+            const messages = flash.get()
 
             if (this.settings.delay && this.settings.autoHide !== false) {
                 setTimeout(function () {
@@ -46,7 +47,9 @@ define([
         },
 
         hideAndDelete: function (message) {
-            return flash.delete(message)
+            flashMessage.clearMessages()
+
+            return this
         },
 
         _setSettings: function (settings) {
