@@ -3,7 +3,7 @@
  * See LICENSE bundled with this library for license details.
  */
 define(['ko', 'underscore'], function (ko, _) {
-    'use strict';
+    'use strict'
 
     return {
         messages: ko.observableArray([]),
@@ -15,7 +15,7 @@ define(['ko', 'underscore'], function (ko, _) {
         set: function (messages) {
             const self = this
             _.each(messages, function (message) {
-                message.visible = ko.observable(true);
+                message.visible = ko.observable(true)
                 self.messages.push(message)
             })
 
@@ -23,9 +23,9 @@ define(['ko', 'underscore'], function (ko, _) {
         },
 
         delete: function (message) {
-            message.visible(false);
+            message.visible(false)
             setTimeout(function () {
-                this.messages.remove(message);
+                this.messages.remove(message)
             }.bind(this), 500)
 
             return this

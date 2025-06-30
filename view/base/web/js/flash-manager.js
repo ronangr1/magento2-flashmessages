@@ -7,41 +7,41 @@ define([
     'underscore',
     'Ronangr1_FlashMessages/js/model/flash'
 ], function (ko, _, flash) {
-    'use strict';
+    'use strict'
 
     return {
         initialize: function (messages) {
             if (messages && messages.length) {
-                this.addMessages(messages);
+                this.addMessages(messages)
             }
 
             return this
         },
 
         addMessage: function (message) {
-            flash.set(message);
+            flash.set(message)
 
-            return this;
+            return this
         },
 
         addMessages: function (messages) {
-            flash.set(messages);
+            flash.set(messages)
 
-            return this;
+            return this
         },
 
         clearMessages: function () {
             _.each(flash.get(), function (message) {
-                flash.delete(message);
-            });
+                flash.delete(message)
+            })
 
-            return this;
+            return this
         },
 
         enqueueMessage: function (message) {
-            this.addMessage(message);
+            this.addMessage(message)
 
-            return this;
+            return this
         }
-    };
-});
+    }
+})
