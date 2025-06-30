@@ -8,7 +8,7 @@ declare(strict_types=1);
 namespace Ronangr1\FlashMessages\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Ronangr1\FlashMessages\Api\FlashInterface;
+use Ronangr1\FlashMessages\Api\FlashMessagesInterface;
 use Ronangr1\FlashMessages\Service\Config;
 
 class FlashMessages implements ArgumentInterface
@@ -16,8 +16,8 @@ class FlashMessages implements ArgumentInterface
     private array $messages = [];
 
     public function __construct(
-        private readonly FlashInterface $flash,
-        private readonly Config $config
+        private readonly FlashMessagesInterface $flash,
+        private readonly Config                 $config
     )
     {
     }
@@ -25,7 +25,7 @@ class FlashMessages implements ArgumentInterface
     public function getMessagesData(): ?array
     {
         if(!$this->messages) {
-            $this->messages[] = $this->flash->get();
+            $this->messages[] = $this->flash->getFlash();
         }
 
         return $this->messages;

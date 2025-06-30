@@ -7,7 +7,7 @@ declare(strict_types=1);
 
 namespace Ronangr1\FlashMessages\Api;
 
-interface FlashInterface
+interface FlashMessagesInterface
 {
     public const TYPE_ERROR = 'error';
 
@@ -19,7 +19,7 @@ interface FlashInterface
 
     public const TYPE_INFO = 'info';
 
-    public function set(array $message): void;
+    public function setFlash(array $message): void;
 
-    public function get(): ?array;
+    public function getFlash(): ?array;
 }

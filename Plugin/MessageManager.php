@@ -8,14 +8,14 @@ declare(strict_types=1);
 namespace Ronangr1\FlashMessages\Plugin;
 
 use Magento\Framework\Message\Manager as CoreMessageManager;
-use Ronangr1\FlashMessages\Api\FlashInterface;
+use Ronangr1\FlashMessages\Api\FlashMessagesInterface;
 use Ronangr1\FlashMessages\Handler\Message as MessageHandler;
 
 class MessageManager
 {
     public function __construct(
-        private readonly MessageHandler $handler,
-        private readonly FlashInterface $flash,
+        private readonly MessageHandler         $handler,
+        private readonly FlashMessagesInterface $flash,
     )
     {
     }
@@ -23,7 +23,7 @@ class MessageManager
     public function afterAddSuccess(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_SUCCESS]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_SUCCESS]);
 
         return $result;
     }
@@ -31,7 +31,7 @@ class MessageManager
     public function afterAddSuccessMessage(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_SUCCESS]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_SUCCESS]);
 
         return $result;
     }
@@ -39,7 +39,7 @@ class MessageManager
     public function afterAddError(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_ERROR]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_ERROR]);
 
         return $result;
     }
@@ -47,7 +47,7 @@ class MessageManager
     public function afterAddErrorMessage(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_ERROR]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_ERROR]);
 
         return $result;
     }
@@ -55,7 +55,7 @@ class MessageManager
     public function afterAddNotice(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => 'info']);
+        $this->flash->setFlash(['message' => $text, 'type' => 'info']);
 
         return $result;
     }
@@ -63,7 +63,7 @@ class MessageManager
     public function afterAddNoticeMessage(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_INFO]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_INFO]);
 
         return $result;
     }
@@ -71,7 +71,7 @@ class MessageManager
     public function afterAddWarning(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_WARNING]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_WARNING]);
 
         return $result;
     }
@@ -79,7 +79,7 @@ class MessageManager
     public function afterAddWarningMessage(CoreMessageManager $subject, $result, $message)
     {
         $text = $this->handler->getText($message);
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_WARNING]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_WARNING]);
 
         return $result;
     }
@@ -89,7 +89,7 @@ class MessageManager
         $identifier = $this->handler->getIdentifier($message);
         $data = $this->handler->getData($message);
         $url = $data['url'] ?? '#';
-        $type = FlashInterface::TYPE_SUCCESS;
+        $type = FlashMessagesInterface::TYPE_SUCCESS;
 
         switch ($identifier) {
             case 'confirmAccountSuccessMessage':
@@ -103,7 +103,7 @@ class MessageManager
                     'There is already an account with this email address. If you are sure that it is your email address, <a href="%1">click here</a> to get your password and access your account.',
                     $url
                 );
-                $type = FlashInterface::TYPE_ERROR;
+                $type = FlashMessagesInterface::TYPE_ERROR;
                 break;
             default:
                 $message = $this->handler->getText($message);
@@ -114,7 +114,7 @@ class MessageManager
                 $message = $this->handler->getText($message);
             }
             $message = str_replace('%1', $url, $message);
-            $this->flash->set(['message' => $message, 'type' => $type]);
+            $this->flash->setFlash(['message' => $message, 'type' => $type]);
         }
 
         return $result;
@@ -123,7 +123,7 @@ class MessageManager
     public function afterAddComplexSuccessMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
     {
         $text = $data['html'];
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_SUCCESS]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_SUCCESS]);
 
         return $result;
     }
@@ -131,7 +131,7 @@ class MessageManager
     public function afterAddComplexErrorMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
     {
         $text = $data['html'];
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_ERROR]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_ERROR]);
 
         return $result;
     }
@@ -139,7 +139,7 @@ class MessageManager
     public function afterAddComplexWarningMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
     {
         $text = $data['html'];
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_WARNING]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_WARNING]);
 
         return $result;
     }
@@ -147,7 +147,7 @@ class MessageManager
     public function afterAddComplexNoticeMessage(CoreMessageManager $subject, $result, $identifier, array $data = [], $group = null)
     {
         $text = $data['html'];
-        $this->flash->set(['message' => $text, 'type' => FlashInterface::TYPE_NOTICE]);
+        $this->flash->setFlash(['message' => $text, 'type' => FlashMessagesInterface::TYPE_NOTICE]);
 
         return $result;
     }
