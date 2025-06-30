@@ -65,6 +65,14 @@ It already works with ajax call.
 
 Go to `Store > Configuration > Ronangr1 > Flash Messages > Settings > Position`.
 
+### How to enable flash messages system ?
+
+Go to `Store > Configuration > Ronangr1 > Flash Messages > General > Enable Admin`
+
+OR
+
+Go to `Store > Configuration > Ronangr1 > Flash Messages > General > Enable Frontend`
+
 ## Support
 
 Raise a new [request](https://github.com/ronangr1/m2-flashmessages/issues) to the issue tracker.
