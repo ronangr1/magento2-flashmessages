@@ -38,9 +38,7 @@ define([
 
             if (this.settings.delay && this.settings.autoHide !== false) {
                 setTimeout(function () {
-                    _.each(messages, function (message) {
-                        self.hideAndDelete(message)
-                    })
+                    flashMessage.clearMessages()
                 }.bind(this), this.settings.delay)
             }
 
