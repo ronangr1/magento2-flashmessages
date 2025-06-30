@@ -8,9 +8,8 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!-- Add a flash messages system -->
         <referenceContainer name="after.body.start">
-            <block name="ronangr1.flash.messages" template="Ronangr1_FlashMessages::html/flash-messages.phtml" ifconfig="flash_messages/general/is_active">
+            <block name="ronangr1.flash.messages" template="Ronangr1_FlashMessages::html/flash-messages.phtml" ifconfig="flash_messages/general/is_active_admin">
                 <arguments>
                     <argument name="view_model" xsi:type="object">Ronangr1\FlashMessages\ViewModel\FlashMessages</argument>
                 </arguments>

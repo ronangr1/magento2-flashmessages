@@ -17,10 +17,15 @@
             <resource>Ronangr1_FlashMessages::config_system</resource>
             <group id="general" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
-                <field id="is_active" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enable</label>
+                <field id="is_active_frontend" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Frontend</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <config_path>flash_messages/general/is_active</config_path>
+                    <config_path>flash_messages/general/is_active_frontend</config_path>
+                </field>
+                <field id="is_active_admin" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Admin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>flash_messages/general/is_active_admin</config_path>
                 </field>
             </group>
             <group id="settings" translate="label comment" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
