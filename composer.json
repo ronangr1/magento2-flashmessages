@@ -5,13 +5,14 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Ronang Guérin",
+            "name": "ronangr1",
             "email": "guerin.ronan@proton.me"
         }
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=8.1"
+        "php": ">=8.1",
+        "ronangr1/module-core": "*"
     },
     "autoload": {
         "files": [
